@@ -1,6 +1,6 @@
 # ruby-rails orb
 
-[![CircleCI Build Status](https://circleci.com/gh/sul-dlss/ruby-rails-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/sul-dlss/ruby-rails-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/sul-dlss/ruby-rails.svg)](https://circleci.com/orbs/registry/orb/sul-dlss/ruby-rails) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/sul-dlss/ruby-rails-orb/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
+[![CircleCI Build Status](https://circleci.com/gh/sul-dlss/ruby-rails-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/sul-dlss/ruby-rails-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/sul-dlss/ruby-rails.svg)](https://circleci.com/orbs/registry/orb/sul-dlss/ruby-rails)
 
 ruby-rails orb is a CircleCI orb that is optimized for DLSS Infrastructure Ruby / Rails projects.
 
