@@ -1,23 +1,32 @@
-# Orb Project Template
+# ruby-rails orb
 
 [![CircleCI Build Status](https://circleci.com/gh/sul-dlss/ruby-rails-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/sul-dlss/ruby-rails-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/sul-dlss/ruby-rails.svg)](https://circleci.com/orbs/registry/orb/sul-dlss/ruby-rails) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/sul-dlss/ruby-rails-orb/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
+ruby-rails orb is a CircleCI orb that is optimized for DLSS Infrastructure Ruby / Rails projects.
 
+This includes:
+* Using Postgres for a database.
+* Using Code Climate for code coverage.
+* Validating openapi specifications.
+* Building Docker images.
 
-A starter template for orb projects. Build, test, and publish orbs automatically on CircleCI with [Orb-Tools](https://circleci.com/orbs/registry/orb/circleci/orb-tools).
+## Requirements
 
-Additional READMEs are available in each directory.
+* Code climate reporter test id added as a CircleCI project environment variable as `CC_TEST_REPORTER_ID`.
+* Docker username and password added to a CircleCI context as `DOCKER_USER` and `DOCKER_PASS`.
+  
+## Development
 
+### Requirements
 
+* [CircleCI CLI](https://circleci.com/docs/2.0/local-cli/#installation) with a [personal access token](https://app.circleci.com/settings/user/tokens)
 
-## Resources
+### Validating the orb
 
-[CircleCI Orb Registry Page](https://circleci.com/orbs/registry/orb/sul-dlss/ruby-rails-orb) - The official registry page of this orb for all versions, executors, commands, and jobs described.
-[CircleCI Orb Docs](https://circleci.com/docs/2.0/orb-intro/#section=configuration) - Docs for using and creating CircleCI Orbs.
-
-### How to Contribute
-
-We welcome [issues](https://github.com/sul-dlss/ruby-rails-orb/issues) to and [pull requests](https://github.com/sul-dlss/ruby-rails-orb/pulls) against this repository!
+```
+$ circleci orb pack src > orb.yml
+$ circleci orb validate orb.yml
+```
 
 ### How to Publish
 * Create and push a branch with your new features.
@@ -36,6 +45,8 @@ Example: `[semver:major]`
 * Squash and merge. Ensure the semver tag is preserved and entered as a part of the commit message.
 * On merge, after manual approval, the orb will automatically be published to the Orb Registry.
 
-
 For further questions/comments about this or other orbs, visit the Orb Category of [CircleCI Discuss](https://discuss.circleci.com/c/orbs).
 
+### Resources
+ * [Orb Author Intro](https://circleci.com/docs/2.0/orb-author-intro/#section=configuration)
+ * [CircleCI Orb Docs](https://circleci.com/docs/2.0/orb-intro/#section=configuration) - Docs for using and creating CircleCI Orbs.
