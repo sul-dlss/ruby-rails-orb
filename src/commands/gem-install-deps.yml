@@ -1,0 +1,7 @@
+description: >
+  Install dependencies without using deployment mode (suitable for gems).
+
+steps:
+  - run:
+      name: Bundle Install
+      command: bundle check || bundle install

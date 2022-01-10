@@ -1,26 +1,30 @@
-# Orb Source
+# ruby-rails orb
+ruby-rails orb is a CircleCI orb that is optimized for DLSS Infrastructure Ruby / Rails projects.
 
-Orbs are shipped as individual `orb.yml` files, however, to make development easier, it is possible to author an orb in _unpacked_ form, which can be _packed_ with the CircleCI CLI and published.
+This includes:
+* Using Postgres for a database.
+* Using Code Climate for code coverage.
+* Validating openapi specifications.
+* Building Docker images.
 
-The default `.circleci/config.yml` file contains the configuration code needed to automatically pack, test, and deploy and changes made to the contents of the orb source in this directory.
+## Requirements
 
-## @orb.yml
+* Code climate reporter test id added as a CircleCI project environment variable as `CC_TEST_REPORTER_ID`.
+* Docker username and password added to a CircleCI context as `DOCKER_USER` and `DOCKER_PASS`.
+  
+## Development
 
-This is the entry point for our orb "tree", which becomes our `orb.yml` file later.
+### Requirements
 
-Within the `@orb.yml` we generally specify 4 configuration keys
+* [CircleCI CLI](https://circleci.com/docs/2.0/local-cli/#installation) with a [personal access token](https://app.circleci.com/settings/user/tokens)
 
-**Keys**
+### Validating the orb
 
-1. **version**
-    Specify version 2.1 for orb-compatible configuration `version: 2.1`
-2. **description**
-    Give your orb a description. Shown within the CLI and orb registry
-3. **display**
-    Specify the `home_url` referencing documentation or product URL, and `source_url` linking to the orb's source repository.
-4. **orbs**
-    (optional) Some orbs may depend on other orbs. Import them here.
+```
+$ circleci orb pack src > orb.yml
+$ circleci orb validate orb.yml
+```
 
-## See:
+### See
  - [Orb Author Intro](https://circleci.com/docs/2.0/orb-author-intro/#section=configuration)
  - [Reusable Configuration](https://circleci.com/docs/2.0/reusing-config)

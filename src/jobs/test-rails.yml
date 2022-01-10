@@ -1,0 +1,51 @@
+description: >
+  Perform rspec testing of a Rails application.
+
+executor: << parameters.executor >>
+
+parameters:
+  executor:
+    default: ruby-postgres
+    description: Executor to use for this job, defaults to ruby-postgres executor
+    type: executor
+  api-only:
+    default: false
+    description: True if this is an API only Rails app.
+    type: boolean
+  install-chrome:
+    default: false
+    description: True to install Chrome
+    type: boolean
+  db-prepare-command:
+    default: db:test:prepare
+    description: Database prepare command
+    type: string
+  before-test:
+    default: []
+    description: Optional steps to run before running rspec
+    type: steps
+
+parallelism: 3
+
+steps:
+  - checkout
+  - ruby/install-deps
+  - when:
+      condition: << parameters.install-chrome >>
+      steps:
+        - browser-tools/install-chrome
+  - unless:
+      condition: << parameters.api-only >>
+      steps:
+        - node/install-packages:
+            pkg-manager: yarn
+  - run:
+      command: 'dockerize -wait tcp://localhost:5432 -timeout 1m'
+      name: Wait for DB
+  - run:
+      name: Test prepare
+      command: bin/rails << parameters.db-prepare-command >>
+  - when:
+      condition: << parameters.before-test >>
+      steps: << parameters.before-test >>
+  - test

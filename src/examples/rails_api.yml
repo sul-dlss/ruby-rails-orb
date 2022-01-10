@@ -1,0 +1,28 @@
+description: >
+  Rails application (API).
+usage:
+  version: 2.1
+  orbs:
+    ruby-rails: sul-dlss/ruby-rails@x.y.z
+  workflows:
+    build:
+      jobs:
+        - ruby-rails/validate-api:
+            name: validate
+        - ruby-rails/lint:
+            name: lint
+        - ruby-rails/test-rails:
+            name: test
+            api-only: true
+        - ruby-rails/docker-publish:
+            context: dlss
+            name: publish-latest
+            image: suldlss/your-app
+            requires:
+              - validate
+              - lint
+              - test
+            filters:
+              branches:
+                only:
+                  - main
