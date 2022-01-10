@@ -1,0 +1,26 @@
+description: >
+  Ruby, postgres, and redis-only executor.
+
+parameters:
+  ruby-tag:
+    default: '2.7.5'
+    description: The `cimg/ruby` Docker image version tag.
+    type: string
+  postgres-tag:
+    default: '11.13'
+    description: The `cimg/postgres` Docker image version tag.
+    type: string
+
+docker:
+  - image: 'cimg/ruby:<< parameters.ruby-tag >>-node'
+    environment:
+      BUNDLE_JOBS: '3'
+      BUNDLE_RETRY: '3'
+      RAILS_ENV: test
+      PAGER: cat
+      TZ: "America/Los_Angeles"
+  - image: 'cimg/postgres:<< parameters.postgres-tag >>'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: sekret
+  - image: circleci/redis:3

@@ -1,0 +1,27 @@
+description: >
+  Perform rspec testing without a database.
+
+executor: << parameters.executor >>
+
+parameters:
+  executor:
+    default: ruby
+    description: Executor to use for this job, defaults to ruby executor
+    type: executor
+  before-test:
+    default: []
+    description: Optional steps to run before running rspec
+    type: steps
+
+parallelism: 3
+
+steps:
+  - checkout
+  - gem-install-deps
+  - run:
+      name: Install rspec_junit_formatter
+      command: bundle add rspec_junit_formatter
+  - when:
+      condition: << parameters.before-test >>
+      steps: << parameters.before-test >>
+  - test

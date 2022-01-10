@@ -1,0 +1,40 @@
+description: >
+  Build and deploy a Docker image.
+
+executor: docker/machine
+
+parameters:
+  docker-password:
+    default: DOCKER_PASS
+    description: |
+      Name of environment variable storing your Docker password
+    type: env_var_name
+  docker-username:
+    default: DOCKER_USER
+    description: |
+      Name of environment variable storing your Docker username
+    type: env_var_name
+  dockerfile:
+    default: Dockerfile
+    description: 'Name of dockerfile to use, defaults to Dockerfile'
+    type: string
+  image:
+    description: Name of image to build
+    type: string
+  tag:
+    default: latest
+    description: 'Comma-separated list of image tags, defaults to latest'
+    type: string
+
+steps:
+  - checkout
+  - docker/check:
+      docker-password: << parameters.docker-password >>
+      docker-username: << parameters.docker-username >>
+  - docker/build:
+      dockerfile: << parameters.dockerfile >>
+      image: << parameters.image >>
+      tag: << parameters.tag >>
+  - docker/push:
+      image: << parameters.image >>
+      tag: << parameters.tag >>

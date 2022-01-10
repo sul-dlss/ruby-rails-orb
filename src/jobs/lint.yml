@@ -1,0 +1,15 @@
+description: >
+  Perform rubocop linting.
+
+executor: << parameters.executor >>
+
+parameters:
+  executor:
+    default: ruby
+    description: Executor to use for this job, defaults to ruby executor
+    type: executor
+
+steps:
+  - checkout
+  - gem-install-deps
+  - ruby/rubocop-check

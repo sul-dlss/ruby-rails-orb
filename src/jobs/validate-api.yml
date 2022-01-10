@@ -1,0 +1,8 @@
+description: >
+  Validate openapi specification.
+
+executor: node/default
+
+steps:
+  - checkout
+  - validate-api
