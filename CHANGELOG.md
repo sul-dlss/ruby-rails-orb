@@ -11,3 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - Initial Release
 ### Removed
  - Initial Release
+
+## [1.1.0] - 2022-01-11
+### Changed
+ - Default Ruby changed to 3.0.3.
+ - Default Postgres changed to 12.9.

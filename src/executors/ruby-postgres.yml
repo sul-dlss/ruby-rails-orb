@@ -3,11 +3,11 @@ description: >
 
 parameters:
   ruby-tag:
-    default: '2.7.5'
+    default: '3.0.3'
     description: The `cimg/ruby` Docker image version tag.
     type: string
   postgres-tag:
-    default: '11.13'
+    default: '12.9'
     description: The `cimg/postgres` Docker image version tag.
     type: string
 
