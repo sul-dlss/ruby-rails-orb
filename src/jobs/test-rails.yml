@@ -16,6 +16,14 @@ parameters:
     default: false
     description: True to install Chrome
     type: boolean
+  install-firefox:
+    default: false
+    description: True to install Firefox
+    type: boolean
+  install-java:
+    default: false
+    description: True to install Java
+    type: boolean
   db-prepare-command:
     default: db:test:prepare
     description: Database prepare command
@@ -32,6 +40,16 @@ steps:
       condition: << parameters.install-chrome >>
       steps:
         - browser-tools/install-chrome
+  - when:
+      condition: << parameters.install-firefox >>
+      steps:
+        - browser-tools/install-firefox
+  - when:
+      condition: << parameters.install-java >>
+      steps:
+        - run:
+            name: Install Java
+            command: sudo apt install openjdk-11-jdk
   - unless:
       condition: << parameters.api-only >>
       steps:
