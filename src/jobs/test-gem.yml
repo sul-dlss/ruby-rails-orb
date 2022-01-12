@@ -13,8 +13,6 @@ parameters:
     description: Optional steps to run before running rspec
     type: steps
 
-parallelism: 3
-
 steps:
   - checkout
   - gem-install-deps
