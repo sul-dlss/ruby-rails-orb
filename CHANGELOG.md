@@ -16,3 +16,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
  - Default Ruby changed to 3.0.3.
  - Default Postgres changed to 12.9.
+
+## [1.2.0] - 2022-01-12
+### Added
+ - Install Firefox option to test-rails.
+ - Install Java option to test-rails.
+### Changed
+ - Fixed example.
+### Removed
+ - Removed parallelism from test-rails and test-gem since breaking code coverage.
