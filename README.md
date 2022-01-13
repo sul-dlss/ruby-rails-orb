@@ -28,6 +28,32 @@ $ circleci orb pack src > orb.yml
 $ circleci orb validate orb.yml
 ```
 
+### Testing orb changes
+Orb changes can be testing using an inline orb:
+1. Make your changes.
+2. Pack the orb with `circleci orb pack src > orb.yml`.
+3. In the `config.yml` of a project repository, replace the orb reference (e.g., `ruby-rails: sul-dlss/ruby-rails@2.0.0`) to an inline orb copied from `orb.yml`:
+
+```
+orbs:
+  ruby-rails:
+    orbs:
+      docker: circleci/docker@2.0.1
+      node: circleci/node@3.0
+      ruby: circleci/ruby@1.2.0
+      browser-tools: circleci/browser-tools@1.2.3
+    executors:
+      ruby:
+        description: Ruby-only executor.
+  ...
+```
+
+4. Commit the test `config.yml` to a branch and let it execute on CircleCI.
+
+#### Testing resources
+* [Writing inline orbs](https://circleci.com/docs/2.0/reusing-config/#writing-inline-orbs).
+* [Testing orbs](https://circleci.com/docs/2.0/testing-orbs/)
+
 ### How to Publish
 * Create and push a branch with your new features.
 * When ready to publish a new production version, create a Pull Request from _feature branch_ to `master`.
