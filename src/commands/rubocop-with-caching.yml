@@ -1,0 +1,23 @@
+description: Runs rubocop with cache restore and save
+
+parameters:
+  path:
+    description: The path of the rubocop cache
+    type: string
+    default: "../.cache/rubocop_cache"
+  cache-version:
+    description: A prefix to the cache key for versioning
+    type: string
+    default: "v1"
+
+steps:
+  - restore_cache:
+      keys:
+        - << parameters.cache-version >>-rubocop-cache-{{ checksum ".rubocop.yml" }}-{{ .Branch }}
+        - << parameters.cache-version >>-rubocop-cache-{{ checksum ".rubocop.yml" }}-main
+        - << parameters.cache-version >>-rubocop-cache-{{ checksum ".rubocop.yml" }}
+  - ruby/rubocop-check
+  - save_cache:
+      key: << parameters.cache-version >>-rubocop-cache-{{ checksum ".rubocop.yml" }}-{{ .Branch }}-{{ epoch }}
+      paths:
+        - << parameters.path >>
