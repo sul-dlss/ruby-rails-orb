@@ -25,3 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - Fixed example.
 ### Removed
  - Removed parallelism from test-rails and test-gem since breaking code coverage.
+
+## [2.1.0] - 2022-02-18
+### Changed
+ - Added caching to Rubocop runs
