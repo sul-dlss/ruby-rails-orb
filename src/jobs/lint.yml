@@ -11,5 +11,5 @@ parameters:
 
 steps:
   - checkout
-  - gem-install-deps
+  - ruby/install-deps
   - rubocop-with-caching
