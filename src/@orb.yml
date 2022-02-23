@@ -8,7 +8,7 @@ display:
   source_url: "https://github.com/sul-dlss/ruby-rails-orb"
 
 orbs:
-  docker: circleci/docker@2.0.1
-  node: circleci/node@3.0
-  ruby: circleci/ruby@1.2.0
-  browser-tools: circleci/browser-tools@1.2.3
+  docker: circleci/docker@2.0.2
+  node: circleci/node@5.0.0
+  ruby: circleci/ruby@1.4.0
+  browser-tools: circleci/browser-tools@1.2.4
