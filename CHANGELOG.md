@@ -29,3 +29,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.1.0] - 2022-02-18
 ### Changed
  - Added caching to Rubocop runs
+
+## [3.0.0] - 2022-02-22
+### Changed
+ - Bumped dependency orbs to latest
+
+## [3.0.1] - 2022-02-25
+### Added
+ - Added lint-gem job appropriate for using with gems
