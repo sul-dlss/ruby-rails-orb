@@ -6,6 +6,7 @@ ruby-rails orb is a CircleCI orb that is optimized for DLSS Infrastructure Ruby 
 
 This includes:
 * Using Postgres for a database.
+* Using Redis as a backend for queues.
 * Using Code Climate for code coverage.
 * Validating openapi specifications.
 * Building Docker images.
