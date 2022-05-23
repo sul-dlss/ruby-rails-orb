@@ -37,3 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [3.0.1] - 2022-02-25
 ### Added
  - Added lint-gem job appropriate for using with gems
+
+## [3.1.1] - 2022-05-23
+### Changed
+  - Stop using sudo to install openapi-enforcer-cli package
