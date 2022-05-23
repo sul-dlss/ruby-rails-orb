@@ -4,8 +4,8 @@ steps:
   - run:
       name: Validate API specification
       command: |
-        sudo npm install -g openapi-enforcer-cli
-        result=$(openapi-enforcer validate openapi.yml)
+        npm install openapi-enforcer-cli
+        result=$(npx openapi-enforcer validate openapi.yml)
         [[ $result =~ "Document is valid" ]] && {
         echo "Validation good"
         exit 0
