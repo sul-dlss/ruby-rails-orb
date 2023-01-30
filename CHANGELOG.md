@@ -41,3 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [3.1.1] - 2022-05-23
 ### Changed
   - Stop using sudo to install openapi-enforcer-cli package
+
+## [3.2.0] - 2023-01-30
+### Added
+  - Adds extra_build_args param to docker/build.
