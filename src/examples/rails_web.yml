@@ -9,6 +9,9 @@ usage:
       jobs:
         - ruby-rails/lint:
             name: lint
+            context: dlss
         - ruby-rails/test-rails:
             name: test
             install-chrome: true
+            context: dlss
+

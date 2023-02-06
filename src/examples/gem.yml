@@ -9,5 +9,7 @@ usage:
       jobs:
         - ruby-rails/lint-gem:
             name: lint
+            context: dlss
         - ruby-rails/test-gem:
             name: test
+            context: dlss
