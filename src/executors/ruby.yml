@@ -3,7 +3,7 @@ description: >
 
 parameters:
   ruby-tag:
-    default: '3.0.3'
+    default: '3.2.2'
     description: The `cimg/ruby` Docker image version tag.
     type: string
 
