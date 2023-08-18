@@ -15,7 +15,11 @@ steps:
         curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         chmod +x ./cc-test-reporter
         ./cc-test-reporter before-build
-  - ruby/rspec-test
+  - run:
+      command: gem install rspec_junit_formatter
+      name: Install Rspec Junit Formatter gem
+  - ruby/rspec-test:
+      rerun-fail: true
   - run:
       name: upload test coverage report to Code Climate
       command: ./cc-test-reporter after-build --coverage-input-type simplecov --exit-code $? -r $<< parameters.cc-test-reporter-id >>

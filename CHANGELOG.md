@@ -49,3 +49,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [4.0.0] - 2023-05-12
 ### Changed
  - Default Ruby changed to 3.2.2.
+
+## [4.1.0] - 2023-08-18
+### Changed
+ - Updated to latest orbs.
+ - Enabled rerun-fail for ruby tests.
+
