@@ -3,15 +3,15 @@ description: >
 
 parameters:
   ruby-tag:
-    default: '3.2.2'
+    default: "3.3.1"
     description: The `cimg/ruby` Docker image version tag.
     type: string
 
 docker:
-  - image: 'cimg/ruby:<< parameters.ruby-tag >>-node'
+  - image: "cimg/ruby:<< parameters.ruby-tag >>-node"
     environment:
-      BUNDLE_JOBS: '3'
-      BUNDLE_RETRY: '3'
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
       RAILS_ENV: test
       PAGER: cat
       TZ: "America/Los_Angeles"
