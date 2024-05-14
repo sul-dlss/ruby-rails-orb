@@ -1,0 +1,17 @@
+description: >
+  Perform erb linting.
+
+executor: << parameters.executor >>
+
+parameters:
+  executor:
+    default: ruby
+    description: Executor to use for this job, defaults to ruby executor
+    type: executor
+
+steps:
+  - checkout
+  - ruby/install-deps
+  - run:
+      name: Lint ERBs
+      command: 'bundle exec erblint --lint-all --format compact'
