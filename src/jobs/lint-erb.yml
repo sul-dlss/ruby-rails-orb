@@ -14,4 +14,4 @@ steps:
   - ruby/install-deps
   - run:
       name: Lint ERBs
-      command: 'bundle exec erblint --lint-all --format compact'
+      command: 'bundle exec erb_lint --lint-all --format compact'
