@@ -91,3 +91,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated to latest orbs.
 - Updated to Ruby 3.4.1.
 
+## [4.4.0] - 2025-01-30
+
+### Changed
+
+- Add support for CodeCov (eventual replacement for CodeClimate, we hope)

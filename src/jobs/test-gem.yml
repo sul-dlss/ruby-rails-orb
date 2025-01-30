@@ -8,6 +8,10 @@ parameters:
     default: ruby
     description: Executor to use for this job, defaults to ruby executor
     type: executor
+  use-codecov:
+    default: false
+    description: True if project uses CodeCov instead of CodeClimate.
+    type: boolean
   before-test:
     default: []
     description: Optional steps to run before running rspec
@@ -22,4 +26,5 @@ steps:
   - when:
       condition: << parameters.before-test >>
       steps: << parameters.before-test >>
-  - test
+  - test:
+      use-codecov: << parameters.use-codecov >>
