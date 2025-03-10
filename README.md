@@ -6,13 +6,12 @@ ruby-rails orb is a CircleCI orb that is optimized for DLSS Infrastructure Ruby 
 
 This includes:
 * Using Postgres for a database.
-* Using Code Climate (or CodeCov) for code coverage.
-* Validating openapi specifications.
+* Using CodeCov for code coverage.
+* Validating OpenAPI specifications.
 * Building Docker images.
 
 ## Requirements
 
-* CodeClimate reporter test id added as a CircleCI project environment variable as `CC_TEST_REPORTER_ID`, if using CodeClimate.
 * CodeCov token added as a CircleCI project environment variable as `CODECOV_TOKEN`, if using CodeCov.
 * Docker username and password added to a CircleCI context as `DOCKER_USER` and `DOCKER_PASS`.
 

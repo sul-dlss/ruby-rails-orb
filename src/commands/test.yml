@@ -2,45 +2,22 @@ description: >
   Runs rspec wrapped with code coverage.
 
 parameters:
-  cc-test-reporter-id:
-    default: CC_TEST_REPORTER_ID
-    description: |
-      Name of environment variable storing your Code Climate reporter test id
-    type: env_var_name
   codecov-token:
     default: CODECOV_TOKEN
     description: |
       Name of environment variable storing your CodeCov token
     type: env_var_name
   use-codecov:
-    default: false
-    description: True if project uses CodeCov instead of CodeClimate.
+    default: true
+    description: True because CodeClimate is no longer supported
     type: boolean
 
 steps:
-  - unless:
-      condition: << parameters.use-codecov >>
-      steps:
-        - run:
-            name: Setup Code Climate test-reporter
-            command: |
-              curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-              chmod +x ./cc-test-reporter
-              ./cc-test-reporter before-build
-        - run:
-            command: gem install rspec_junit_formatter
-            name: Install Rspec Junit Formatter gem
   - ruby/rspec-test:
       rerun-fail: true
   - when:
       condition: << parameters.use-codecov >>
       steps:
         - codecov/upload
-  - unless:
-      condition: << parameters.use-codecov >>
-      steps:
-        - run:
-            name: upload test coverage report to Code Climate
-            command: ./cc-test-reporter after-build --coverage-input-type simplecov --exit-code $? -r $<< parameters.cc-test-reporter-id >>
   - store_artifacts:
       path: tmp/capybara

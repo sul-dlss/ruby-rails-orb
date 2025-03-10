@@ -25,8 +25,8 @@ parameters:
     description: True to install Java
     type: boolean
   use-codecov:
-    default: false
-    description: True if project uses CodeCov instead of CodeClimate.
+    default: true
+    description: True because CodeClimate is no longer supported
     type: boolean
   db-prepare-command:
     default: db:test:prepare
