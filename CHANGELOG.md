@@ -96,3 +96,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Add support for CodeCov (eventual replacement for CodeClimate, we hope)
+
+## [4.5.0] - 2025-03-11
+
+### Changed
+
+- Remove support for CodeClimate

@@ -9,8 +9,8 @@ parameters:
     description: Executor to use for this job, defaults to ruby executor
     type: executor
   use-codecov:
-    default: false
-    description: True if project uses CodeCov instead of CodeClimate.
+    default: true
+    description: True because CodeClimate is no longer supported
     type: boolean
   before-test:
     default: []
