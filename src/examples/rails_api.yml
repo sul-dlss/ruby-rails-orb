@@ -15,6 +15,7 @@ usage:
         - ruby-rails/test-rails:
             name: test
             api-only: true
+            parallelism: 2
             context: dlss
         - ruby-rails/docker-publish:
             context: dlss

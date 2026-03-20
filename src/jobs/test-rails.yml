@@ -2,12 +2,17 @@ description: >
   Perform rspec testing of a Rails application.
 
 executor: << parameters.executor >>
+parallelism: << parameters.parallelism >>
 
 parameters:
   executor:
     default: ruby-postgres
     description: Executor to use for this job, defaults to ruby-postgres executor
     type: executor
+  parallelism:
+    default: 1
+    description: Number of parallel containers to use for testing
+    type: integer
   api-only:
     default: false
     description: True if this is an API only Rails app.
