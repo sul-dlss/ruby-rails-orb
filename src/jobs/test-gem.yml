@@ -2,12 +2,17 @@ description: >
   Perform rspec testing without a database.
 
 executor: << parameters.executor >>
+parallelism: << parameters.parallelism >>
 
 parameters:
   executor:
     default: ruby
     description: Executor to use for this job, defaults to ruby executor
     type: executor
+  parallelism:
+    default: 1
+    description: Number of parallel containers to use for testing
+    type: integer
   use-codecov:
     default: true
     description: True because CodeClimate is no longer supported

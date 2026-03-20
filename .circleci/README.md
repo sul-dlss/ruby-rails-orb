@@ -1,33 +1,24 @@
 # Orb Development Pipeline
 
-This configuration file uses [orb-tools orb]() version 10 to automatically _pack_, _test_, and _publish_ CircleCI orbs using this project structure. View the comments within the config file for a full break  down
+This project now uses orb-tools version 12 with CircleCI dynamic configuration to pack, test, and publish the orb.
 
-## Overview:
+## Overview
 
-**Imported Orbs**
+- CircleCI dynamic configuration must be enabled for this project because `.circleci/config.yml` runs in setup mode.
+- `.circleci/config.yml` is the setup configuration. It lints and packs the orb source, then continues the pipeline into `.circleci/test-deploy.yml`.
+- `.circleci/test-deploy.yml` receives the packed orb as an injected inline orb and runs the integration test jobs.
+- Production publishing now happens from `test-deploy.yml` when a tag matches `^v[0-9]+\.[0-9]+\.[0-9]+$`.
 
-Both orb-tools and a development version of your orb will be imported into the config. On the first run, a `dev:alpha` development tag _must_ exist on your orb, but will be handled automatically from there on.
+## Jobs
 
-**Jobs**
+Define integration tests in `.circleci/test-deploy.yml`. Those jobs can reference the injected `ruby-rails` orb as if it had already been published.
 
-In the _jobs_ key, you will define _integration tests_. These jobs will utilize the functionality of your orb at run-time and attempt to validate their usage with live examples. Integration tests can be an excellent way of determining issues with parameters and run-time execution.
+## Workflows
 
-### Workflows
+**lint-pack**
 
-There are two workflows which automate the pack, test, and publishing process.
+Runs linting and orb packing in setup mode, then hands the pipeline off to `.circleci/test-deploy.yml` via `orb-tools/continue`.
 
-**test-pack**
+**test-deploy**
 
-This is the first of the two workflows run. This workflow is responsible for any testing or prepping prior to integration tests. This is where linting occurs, shellchecking, BATS tests, or anything else that can be be tested without the need for further credentials.
-
-This Workflow will be placed on _hold_ prior to publishing a new development version of the orb (based on this commit), as this step requires access to specific publishing credentials.
-
-This allows users to fork the orb repository and begin the pipeline, while the code-owners review that the code is safe to test in an environment where publishing keys will be present.
-
-Once approved, the development version of the orb will publish and the _trigger-integration-tests-workflow_ job will run, kicking off the next workflow
-
-**integration-test_deploy**
-
-The second and final workflow is manually triggered by the _trigger-integration-tests-workflow_ job. In this run, the development version of the orb that was just published will be imported, and the integration tests will run.
-
-When running on the `master` branch (after merging to `master`), the workflow will additionally publish your new production orb.
+Runs integration tests on branches and tags. On release tags, it repacks the orb and publishes the production version to the Orb Registry.

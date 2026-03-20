@@ -12,4 +12,5 @@ usage:
             context: dlss
         - ruby-rails/test-gem:
             name: test
+            parallelism: 2
             context: dlss
