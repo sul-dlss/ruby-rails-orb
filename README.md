@@ -56,20 +56,10 @@ orbs:
 
 ### How to Publish
 * Create and push a branch with your new features.
-* When ready to publish a new production version, create a Pull Request from _feature branch_ to `main`.
-* The title of the pull request must contain a special semver tag: `[semver:<segment>]` where `<segment>` is replaced by one of the following values.
-
-| Increment | Description|
-| ----------| -----------|
-| major     | Issue a 1.0.0 incremented release|
-| minor     | Issue a x.1.0 incremented release|
-| patch     | Issue a x.x.1 incremented release|
-| skip      | Do not issue a release|
-
-Example: `[semver:major]`
-
-* Squash and merge. Ensure the semver tag is preserved and entered as a part of the commit message.
-* On merge, after manual approval, the orb will automatically be published to the Orb Registry.
+* Merge the changes you want to release to `main`.
+* Create and push a semantic version tag such as `v4.6.0`, or create a GitHub release that creates the tag for you.
+* A CircleCI pipeline triggered by a tag matching `^v[0-9]+\.[0-9]+\.[0-9]+$` will run the release workflow and publish `sul-dlss/ruby-rails` at that version.
+* Ensure the `orb-publishing` context contains a production publishing token in `CIRCLE_TOKEN` before creating the tag.
 
 For further questions/comments about this or other orbs, visit the Orb Category of [CircleCI Discuss](https://discuss.circleci.com/c/orbs).
 
