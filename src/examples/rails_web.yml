@@ -10,8 +10,10 @@ usage:
         - ruby-rails/lint:
             name: lint
             context: dlss
+        - ruby-rails/herblint
         - ruby-rails/lint-erb
         - ruby-rails/lint-js
+        - ruby-rails/stylelint
         - ruby-rails/test-rails:
             name: test
             install-chrome: true

@@ -108,3 +108,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Added optional job-level parallelism support back to `test-rails` and `test-gem`.
+- Adds stylelint.
+- Adds herblint.
