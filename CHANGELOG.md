@@ -110,3 +110,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added optional job-level parallelism support back to `test-rails` and `test-gem`.
 - Adds stylelint.
 - Adds herblint.
+
+## [4.8.0] = 2026-05-06
+
+### Changed
+
+- Updated ruby orb to 2.6.0.
