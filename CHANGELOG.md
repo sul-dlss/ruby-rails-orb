@@ -116,3 +116,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated ruby orb to 2.6.0.
+
+## [4.8.0] = 2026-06-03
+
+### Changed
+
+- Updated docker orb to 4.0.0.
+- Build docker images from amd64 and arm64 by default.

@@ -1,5 +1,5 @@
 description: >
-  Build and deploy a Docker image.
+  Build and deploy a Docker image. Supports multi-platform builds (e.g., linux/amd64,linux/arm64).
 
 executor: docker/machine
 
@@ -30,17 +30,34 @@ parameters:
     description: |
         Extra flags to pass to docker build. For examples, see https://docs.docker.com/engine/reference/commandline/build
     type: string
+  platforms:
+    default: "linux/amd64,linux/arm64"
+    description: 'Comma-separated list of target platforms (e.g., linux/amd64,linux/arm64)'
+    type: string
 
 steps:
   - checkout
   - docker/check:
-      docker-password: << parameters.docker-password >>
-      docker-username: << parameters.docker-username >>
-  - docker/build:
-      dockerfile: << parameters.dockerfile >>
-      image: << parameters.image >>
-      tag: << parameters.tag >>
-      extra_build_args: << parameters.extra_build_args >>
-  - docker/push:
-      image: << parameters.image >>
-      tag: << parameters.tag >>
+      docker_password: << parameters.docker-password >>
+      docker_username: << parameters.docker-username >>
+  - run:
+      name: Set up QEMU for multi-platform builds
+      command: docker run --privileged --rm tonistiigi/binfmt --install all
+  - run:
+      name: Set up Docker Buildx
+      command: docker buildx create --use --name multiarch-builder
+  - run:
+      name: Build and push Docker image
+      command: |
+        TAGS=""
+        IFS=',' read -ra TAG_LIST \<<< "<< parameters.tag >>"
+        for tag in "${TAG_LIST[@]}"; do
+          TAGS="$TAGS --tag << parameters.image >>:${tag}"
+        done
+        docker buildx build \
+          --platform << parameters.platforms >> \
+          $TAGS \
+          --file << parameters.dockerfile >> \
+          --push \
+          << parameters.extra_build_args >> \
+          .
