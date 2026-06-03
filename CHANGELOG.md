@@ -117,7 +117,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Updated ruby orb to 2.6.0.
 
-## [4.8.0] = 2026-06-03
+## [4.9.0] = 2026-06-03
 
 ### Changed
 
