@@ -17,6 +17,14 @@ parameters:
     default: true
     description: True because CodeClimate is no longer supported
     type: boolean
+  install-node:
+    default: false
+    description: True to install Node.js
+    type: boolean
+  node-version:
+    default: "24.16.0"
+    description: Node.js version to install
+    type: string
   before-test:
     default: []
     description: Optional steps to run before running rspec
@@ -25,6 +33,12 @@ parameters:
 steps:
   - checkout
   - gem-install-deps
+  - when:
+      condition: << parameters.install-node >>
+      steps:
+        - node/install:
+              node-version: << parameters.node-version >>
+              install-yarn: true
   - run:
       name: Install rspec_junit_formatter
       command: bundle add rspec_junit_formatter

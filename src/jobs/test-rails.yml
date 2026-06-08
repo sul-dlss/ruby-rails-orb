@@ -37,6 +37,10 @@ parameters:
     default: db:test:prepare
     description: Database prepare command
     type: string
+  node-version:
+    default: "24.16.0"
+    description: Node.js version to install
+    type: string
   before-test:
     default: []
     description: Optional steps to run before running rspec
@@ -44,6 +48,9 @@ parameters:
 
 steps:
   - checkout
+  - node/install:
+      node-version: << parameters.node-version >>
+      install-yarn: true
   - ruby/install-deps
   - when:
       condition: << parameters.install-chrome >>

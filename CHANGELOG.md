@@ -129,3 +129,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated codecov orb to 6.0.0
+
+## [4.11.0] = 2026-06-08
+
+### Changed
+
+- Added ability to configure node version.
