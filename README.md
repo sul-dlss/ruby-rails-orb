@@ -19,7 +19,7 @@ This includes:
 
 ### Requirements
 
-* [CircleCI CLI](https://circleci.com/docs/2.0/local-cli/#installation) with a [personal access token](https://app.circleci.com/settings/user/tokens)
+* [CircleCI CLI](https://github.com/CircleCI-Public/circleci-cli#readme) with a [personal access token](https://app.circleci.com/settings/user/tokens)
 
 ### Validating the orb
 
