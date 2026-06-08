@@ -123,3 +123,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Updated docker orb to 4.0.0.
 - Build docker images from amd64 and arm64 by default.
+
+## [4.10.0] = 2026-06-08
+
+### Changed
+
+- Updated codecov orb to 6.0.0
