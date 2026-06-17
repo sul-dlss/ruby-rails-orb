@@ -1,0 +1,17 @@
+description: >
+  Perform brakeman security audit.
+
+executor: << parameters.executor >>
+
+parameters:
+  executor:
+    default: ruby
+    description: Executor to use for this job, defaults to ruby executor
+    type: executor
+
+steps:
+  - checkout
+  - ruby/install-deps
+  - run:
+      name: Brakeman security audit
+      command: bin/brakeman --quiet --no-pager --exit-on-warn --exit-on-error -i config/brakeman.ignore

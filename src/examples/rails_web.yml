@@ -14,6 +14,7 @@ usage:
         - ruby-rails/lint-erb
         - ruby-rails/lint-js
         - ruby-rails/stylelint
+        - ruby-rails/brakeman
         - ruby-rails/test-rails:
             name: test
             install-chrome: true
