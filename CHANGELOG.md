@@ -135,3 +135,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Added ability to configure node version.
+
+## [5.0.0] = 2026-10-09
+
+### Changed
+
+- Updated to Ruby 4.0.7
