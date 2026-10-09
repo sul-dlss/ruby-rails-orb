@@ -9,7 +9,7 @@ display:
 
 orbs:
   browser-tools: circleci/browser-tools@2.4.2
-  codecov: codecov/codecov@6.0.0
+  codecov: codecov/codecov@6.1.0
   docker: circleci/docker@4.0.1
   node: circleci/node@7.2.1
   ruby: circleci/ruby@3.0.0
